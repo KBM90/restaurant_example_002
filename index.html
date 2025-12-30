@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Addis Café Leipzig - Authentic Ethiopian restaurant offering traditional platters with vegan options. LGBTQ+ friendly, women-owned.">
+    <meta name="keywords" content="Ethiopian restaurant, Leipzig, vegan options, traditional food, Addis Café">
+    <title>Addis Café Leipzig - Authentic Ethiopian Restaurant</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Addis Café</h1>
+                <span class="nav-tagline">Ethiopian Cuisine</span>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link" data-i18n="nav.home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+                <li><a href="#menu" class="nav-link" data-i18n="nav.menu">Menu</a></li>
+                <li><a href="#gallery" class="nav-link" data-i18n="nav.gallery">Gallery</a></li>
+                <li><a href="#reservation" class="nav-link" data-i18n="nav.reservations">Reservations</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+                <li class="lang-selector-wrapper">
+                    <select id="languageSelector" class="language-selector" aria-label="Select language">
+                        <option value="de">🇩🇪 Deutsch</option>
+                        <option value="fr">🇫🇷 Français</option>
+                        <option value="en" selected>🇬🇧 English</option>
+                        <option value="ar">🇸🇦 العربية</option>
+                        <option value="es">🇪🇸 Español</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title animate-fade-in">Addis Café Leipzig</h1>
+            <p class="hero-subtitle animate-fade-in-delay">Authentic Ethiopian Flavors in the Heart of Leipzig</p>
+            <div class="hero-rating animate-fade-in-delay-2">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">4.7 (374 reviews)</span>
+            </div>
+            <div class="hero-buttons animate-fade-in-delay-3">
+                <a href="#reservation" class="btn btn-primary">Reserve a Table</a>
+                <a href="#menu" class="btn btn-secondary">View Menu</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Welcome to Addis Café</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">Experience the rich traditions of Ethiopian cuisine in a laid-back, welcoming
+                        atmosphere.</p>
+                    <p>Located in the heart of Leipzig at Brüderstraße 39, Addis Café brings you authentic Ethiopian
+                        platters served on traditional injera bread. Our menu features a wonderful selection of both
+                        meat and vegan dishes, prepared with traditional spices and cooking methods passed down through
+                        generations.</p>
+                    <p>Whether you're dining solo, with family, or in groups, our cozy patio and friendly service create
+                        the perfect setting for an unforgettable culinary journey to Ethiopia.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌱</div>
+                        <h3>Vegan Options</h3>
+                        <p>Extensive vegan menu with traditional Ethiopian dishes</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👩‍🍳</div>
+                        <h3>Women-Owned</h3>
+                        <p>Proudly women-owned and operated</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏳️‍🌈</div>
+                        <h3>LGBTQ+ Friendly</h3>
+                        <p>Safe and welcoming space for everyone</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">☕</div>
+                        <h3>Great Coffee</h3>
+                        <p>Traditional Ethiopian coffee ceremony</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-label">Price Range</span>
+                    <span class="highlight-value">€10–20 per person</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">Atmosphere</span>
+                    <span class="highlight-value">Casual, Cozy, Trendy</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-label">Services</span>
+                    <span class="highlight-value">Dine-in, Takeaway, Delivery</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Menu</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Traditional Ethiopian dishes prepared with authentic spices and love</p>
+            </div>
+
+            <!-- Appetizers -->
+            <div class="menu-category">
+                <h3 class="category-title" data-menu-type="appetizers">Vorspeisen (Appetizers)</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Tomatensuppe</h4>
+                            <span class="price">€7</span>
+                        </div>
+                        <p class="menu-item-description">Tomato Soup</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Linsensuppe</h4>
+                            <span class="price">€5</span>
+                        </div>
+                        <p class="menu-item-description">Lentil Soup</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Salat klein</h4>
+                            <span class="price">€5</span>
+                        </div>
+                        <p class="menu-item-description">Small Salad</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Salat groß</h4>
+                            <span class="price">€7</span>
+                        </div>
+                        <p class="menu-item-description">Large Salad</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dishes -->
+            <div class="menu-category">
+                <h3 class="category-title" data-menu-type="mains">Hauptspeisen (Main Dishes)</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Injera be Dorowot</h4>
+                            <span class="price">€14</span>
+                        </div>
+                        <p class="menu-item-description">With spicy chicken & fresh cheese</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Injera be Berowot</h4>
+                            <span class="price">€14</span>
+                        </div>
+                        <p class="menu-item-description">With spicy beef</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Injera be Berallicha</h4>
+                            <span class="price">€13</span>
+                        </div>
+                        <p class="menu-item-description">With beef curry</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Injera be Tibs</h4>
+                            <span class="price">€14</span>
+                        </div>
+                        <p class="menu-item-description">With beef pan</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Injera be Beg Tibs</h4>
+                            <span class="price">€18</span>
+                        </div>
+                        <p class="menu-item-description">With lamb pan</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Injera be ye Einettu</h4>
+                            <span class="price">€15</span>
+                        </div>
+                        <p class="menu-item-description">Variation of sauces</p>
+                    </div>
+                    <div class="menu-item featured">
+                        <div class="menu-item-header">
+                            <h4>Addis Special</h4>
+                            <span class="price">€25</span>
+                        </div>
+                        <p class="menu-item-description">Einettu with beef pan, for 2 persons</p>
+                    </div>
+                    <div class="menu-item featured">
+                        <div class="menu-item-header">
+                            <h4>Addis Special mit Beg Tibs</h4>
+                            <span class="price">€27</span>
+                        </div>
+                        <p class="menu-item-description">Einettu with lamb pan, for 2 persons</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vegan Menu -->
+            <div class="menu-category vegan-section">
+                <h3 class="category-title" data-menu-type="vegan">🌱 Vegane Speisekarte (Vegan Menu)</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Je Tsom be ye Einettu</h4>
+                            <span class="price">€12</span>
+                        </div>
+                        <p class="menu-item-description">Vegan sauces & more</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Je Tsom Addis Special</h4>
+                            <span class="price">€22</span>
+                        </div>
+                        <p class="menu-item-description">For 2 persons</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Je Tsom Tibs</h4>
+                            <span class="price">€12</span>
+                        </div>
+                        <p class="menu-item-description">Mushroom pan & 2 vegan sauces</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Injera be Shiro</h4>
+                            <span class="price">€12</span>
+                        </div>
+                        <p class="menu-item-description">Chickpea sauce with Shiro spices</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sides -->
+            <div class="menu-category">
+                <h3 class="category-title" data-menu-type="sides">Soßen, Gemüsepfannen & Specials (Sauces & Vegetable
+                    Pans)</h3>
+                <div class="menu-grid sides-grid">
+                    <div class="menu-item small">
+                        <div class="menu-item-header">
+                            <h4>Misir</h4>
+                            <span class="price">€3</span>
+                        </div>
+                        <p class="menu-item-description">Red lentil puree</p>
+                    </div>
+                    <div class="menu-item small">
+                        <div class="menu-item-header">
+                            <h4>Atter</h4>
+                            <span class="price">€3</span>
+                        </div>
+                        <p class="menu-item-description">Yellow pea puree with turmeric</p>
+                    </div>
+                    <div class="menu-item small">
+                        <div class="menu-item-header">
+                            <h4>Defin Misir</h4>
+                            <span class="price">€2.5</span>
+                        </div>
+                        <p class="menu-item-description">Black lentil curry</p>
+                    </div>
+                    <div class="menu-item small">
+                        <div class="menu-item-header">
+                            <h4>Shiro</h4>
+                            <span class="price">€2.5</span>
+                        </div>
+                        <p class="menu-item-description">Chickpea sauce with Shiro spices</p>
+                    </div>
+                    <div class="menu-item small">
+                        <div class="menu-item-header">
+                            <h4>Dinitch Wot</h4>
+                            <span class="price">€2.5</span>
+                        </div>
+                        <p class="menu-item-description">Potato & zucchini in spicy red sauce</p>
+                    </div>
+                    <div class="menu-item small">
+                        <div class="menu-item-header">
+                            <h4>Gomen</h4>
+                            <span class="price">€2.5</span>
+                        </div>
+                        <p class="menu-item-description">Kale</p>
+                    </div>
+                    <div class="menu-item small">
+                        <div class="menu-item-header">
+                            <h4>Fosselia be Carrot</h4>
+                            <span class="price">€2.5</span>
+                        </div>
+                        <p class="menu-item-description">Bean-carrot pan</p>
+                    </div>
+                    <div class="menu-item small">
+                        <div class="menu-item-header">
+                            <h4>Schwarzer Linsensalat</h4>
+                            <span class="price">€2.5</span>
+                        </div>
+                        <p class="menu-item-description">Black lentil salad (cold)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specials -->
+            <div class="menu-category">
+                <h3 class="category-title" data-menu-type="specials">Specials</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Fre Special</h4>
+                            <span class="price">€16</span>
+                        </div>
+                        <p class="menu-item-description">Chicken, beef curry, fresh cheese & kale</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Injera be Kitfo</h4>
+                            <span class="price">€15</span>
+                        </div>
+                        <p class="menu-item-description">Beef tartare, fresh cheese & kale</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Shiro Special (vegetarisch)</h4>
+                            <span class="price">€15</span>
+                        </div>
+                        <p class="menu-item-description">Vegetarian</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Shiro Special (vegan)</h4>
+                            <span class="price">€14</span>
+                        </div>
+                        <p class="menu-item-description">Vegan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-category">
+                <h3 class="category-title" data-menu-type="desserts">Desserts</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Joghurt mit gerösteten Mandeln & Honig</h4>
+                            <span class="price">€4.5</span>
+                        </div>
+                        <p class="menu-item-description">Yogurt with roasted almonds & honey</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Joghurt mit gerösteten Mandeln & Früchten</h4>
+                            <span class="price">€4.5</span>
+                        </div>
+                        <p class="menu-item-description">Yogurt with roasted almonds & fruits</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kids Menu -->
+            <div class="menu-category">
+                <h3 class="category-title" data-menu-type="kids">Kinder (Kids)</h3>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Kleiner Injera-Teller</h4>
+                            <span class="price">€5</span>
+                        </div>
+                        <p class="menu-item-description">Small Injera plate with 3 sauces of choice</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header">
+                            <h4>Pfannkuchen</h4>
+                            <span class="price">€5</span>
+                        </div>
+                        <p class="menu-item-description">Pancakes with applesauce and honey</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Gallery</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">A glimpse into our restaurant and authentic Ethiopian cuisine</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-index="0">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171126.png" alt="Addis Café interior"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="1">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171203.png" alt="Ethiopian dishes"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="2">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171220.png" alt="Traditional platter"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="3">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171232.png" alt="Restaurant atmosphere"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="4">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171243.png" alt="Vegan options" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="5">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171450.png" alt="Ethiopian coffee"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="6">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171504.png" alt="Dining experience"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="7">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171526.png" alt="Food presentation"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="8">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171538.png" alt="Restaurant details"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="9">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171555.png" alt="Cozy atmosphere"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="10">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171638.png" alt="Traditional serving"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="11">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171747.png" alt="Menu highlights"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="12">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171800.png" alt="Outdoor seating"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="13">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171818.png" alt="Fresh ingredients"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="14">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171829.png" alt="Authentic cuisine"
+                        loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+                <div class="gallery-item" data-index="15">
+                    <img src="assets/images/galery/Screenshot 2025-12-29 171842.png" alt="Dining area" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span class="gallery-icon">🔍</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">&#10094;</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">&#10095;</button>
+        <img src="" alt="" id="lightboxImage">
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Reserve a Table</h2>
+                <div class="section-divider"></div>
+                <p class="section-subtitle">Book your table and experience authentic Ethiopian cuisine</p>
+            </div>
+            <div class="reservation-content">
+                <div class="reservation-info">
+                    <h3>Opening Hours</h3>
+                    <div class="hours-list">
+                        <div class="hours-item">
+                            <span class="day">Monday - Thursday</span>
+                            <span class="time">4:00 PM - 11:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Friday - Saturday</span>
+                            <span class="time">4:00 PM - 12:00 AM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span class="day">Sunday</span>
+                            <span class="time">4:00 PM - 10:00 PM</span>
+                        </div>
+                    </div>
+                    <div class="reservation-note">
+                        <p><strong>Dinner reservations recommended</strong></p>
+                        <p>We accept walk-ins based on availability. For groups of 6 or more, please call us in advance.
+                        </p>
+                    </div>
+                </div>
+                <div class="reservation-form-container">
+                    <form id="reservationForm" class="reservation-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resName">Full Name *</label>
+                                <input type="text" id="resName" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="resEmail">Email *</label>
+                                <input type="email" id="resEmail" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resPhone">Phone Number *</label>
+                                <input type="tel" id="resPhone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="resPartySize">Party Size *</label>
+                                <select id="resPartySize" name="partySize" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">1 person</option>
+                                    <option value="2">2 people</option>
+                                    <option value="3">3 people</option>
+                                    <option value="4">4 people</option>
+                                    <option value="5">5 people</option>
+                                    <option value="6">6 people</option>
+                                    <option value="7">7 people</option>
+                                    <option value="8">8 people</option>
+                                    <option value="9">9 people</option>
+                                    <option value="10">10+ people</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resDate">Date *</label>
+                                <input type="date" id="resDate" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="resTime">Time *</label>
+                                <input type="time" id="resTime" name="time" required min="16:00" max="23:00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="resRequests">Special Requests</label>
+                            <textarea id="resRequests" name="requests" rows="4"
+                                placeholder="Dietary restrictions, special occasions, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                            <span class="btn-text">Reserve Table</span>
+                            <span class="btn-loader" style="display: none;"></span>
+                        </button>
+                        <div class="form-message" id="formMessage"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Visit Us</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Address</h3>
+                            <p>Brüderstraße 39<br>04103 Leipzig, Germany</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p><a href="tel:+4934124831144">+49 341 24831144</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div class="contact-details">
+                            <h3>Website</h3>
+                            <p><a href="https://addis-cafe.de" target="_blank" rel="noopener">addis-cafe.de</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">♿</div>
+                        <div class="contact-details">
+                            <h3>Accessibility</h3>
+                            <p>Wheelchair-accessible entrance & seating</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Addis Café Leipzig</h3>
+                    <p>Authentic Ethiopian cuisine in the heart of Leipzig. Women-owned, LGBTQ+ friendly, with extensive
+                        vegan options.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#reservation">Reservations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Opening Hours</h3>
+                    <p>Mon-Thu: 4:00 PM - 11:00 PM<br>
+                        Fri-Sat: 4:00 PM - 12:00 AM<br>
+                        Sunday: 4:00 PM - 10:00 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Brüderstraße 39<br>04103 Leipzig, Germany<br>
+                        Phone: <a href="tel:+4934124831144">+49 341 24831144</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Addis Café Leipzig. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/4934124831144?text=Hello%20Addis%20Café!%20I%20would%20like%20to%20make%20a%20reservation."
+        class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+        <svg viewBox="0 0 32 32" class="whatsapp-icon">
+            <path fill="currentColor"
+                d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 7.933-2.127c2.42 1.37 5.173 2.127 8.067 2.127 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.467c-2.482 0-4.908-0.646-7.07-1.87l-0.507-0.292-5.247 1.408 1.417-5.267-0.321-0.525c-1.331-2.178-2.039-4.693-2.039-7.254 0-7.589 6.178-13.767 13.767-13.767s13.767 6.178 13.767 13.767-6.178 13.767-13.767 13.767zM21.713 18.362c-0.271-0.137-1.607-0.794-1.857-0.884-0.25-0.090-0.432-0.137-0.614 0.137s-0.705 0.884-0.864 1.067c-0.159 0.182-0.318 0.205-0.589 0.068-1.607-0.803-2.661-1.435-3.723-3.249-0.282-0.478 0.282-0.444 0.807-1.48 0.090-0.182 0.045-0.341-0.023-0.478-0.068-0.137-0.614-1.48-0.841-2.025-0.221-0.53-0.446-0.458-0.614-0.467-0.159-0.008-0.341-0.010-0.523-0.010s-0.478 0.068-0.728 0.341c-0.25 0.273-0.955 0.932-0.955 2.274s0.978 2.637 1.114 2.819c0.137 0.182 1.929 2.945 4.675 4.13 1.739 0.751 2.418 0.808 3.285 0.682 0.527-0.077 1.607-0.657 1.834-1.292s0.227-1.179 0.159-1.292c-0.068-0.114-0.25-0.182-0.523-0.319z" />
+        </svg>
+        <span class="whatsapp-text">WhatsApp</span>
+    </a>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Translations -->
+    <script src="translations.js"></script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
