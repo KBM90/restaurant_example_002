@@ -5,8 +5,8 @@
 
 // === SUPABASE CONFIGURATION ===
 const SUPABASE_URL = 'https://fgpdpafbshjmhttifpca.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZncGRwYWZic2hqbWh0dGlmcGNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0OTI1NzIsImV4cCI6MjA1MTA2ODU3Mn0.sb_publishable_NIZiIXUMqPnI_CIfIgGELg_Zk73A7YC';
-
+//const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZncGRwYWZic2hqbWh0dGlmcGNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU0OTI1NzIsImV4cCI6MjA1MTA2ODU3Mn0.sb_publishable_NIZiIXUMqPnI_CIfIgGELg_Zk73A7YC';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZncGRwYWZic2hqbWh0dGlmcGNhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjcwMTk3MTQsImV4cCI6MjA4MjU5NTcxNH0.wb41WdgZmyZXT7tsToSegmr13BGdXItJnw1Q3mrT7Aw';
 // Initialize Supabase client
 let dbClient;
 try {
