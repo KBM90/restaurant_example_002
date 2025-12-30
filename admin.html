@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Addis Café</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Login Section -->
+        <div id="loginSection" class="login-box">
+            <div class="login-header">
+                <h2>Addis Café Admin</h2>
+                <p>Please sign in to manage reservations</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="admin@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-login" id="loginBtn">Sign In</button>
+                <p id="loginError" class="error-msg"></p>
+            </form>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboardSection" class="dashboard hidden">
+            <header class="dashboard-header">
+                <h1>Reservations</h1>
+                <div class="header-actions">
+                    <button id="refreshBtn" class="btn-secondary">↻ Refresh</button>
+                    <button id="logoutBtn" class="btn-secondary">Sign Out</button>
+                </div>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Reservations</h3>
+                    <p id="totalStats">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending</h3>
+                    <p id="pendingStats">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Confirmed</h3>
+                    <p id="confirmedStats">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Today's Reservations</h3>
+                    <p id="todayStats">0</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="reservationsTable">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Date & Time</th>
+                            <th>Customer</th>
+                            <th>Party</th>
+                            <th>Contact</th>
+                            <th>Requests</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reservationsBody">
+                        <!-- Rows will be populated by JS -->
+                    </tbody>
+                </table>
+                <div id="loading" class="loading hidden">Loading reservations...</div>
+                <div id="emptyState" class="empty-state hidden">No reservations found.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
